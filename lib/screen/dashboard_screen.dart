@@ -5,7 +5,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome, Anggita'),
+        title: Text('Welcome, Arfira Andayani'),
         actions: [
           IconButton(
             icon: Icon(Icons.message),
