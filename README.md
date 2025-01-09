@@ -8,5 +8,7 @@ Halaman Utama
 Halaman sign in
 ![alt text](image-3.png)
 
+Halaman sign up
+![alt text](image-4.png)
 
 
