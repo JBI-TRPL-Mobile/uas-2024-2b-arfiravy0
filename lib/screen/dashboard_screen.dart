@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'message_screen.dart'; 
+import 'message_screen.dart';
+import 'profile_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
 
@@ -19,7 +20,11 @@ class DashboardScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
-              print('Person icon pressed');
+              // Navigasi ke halaman profil
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
             },
           ),
         ],
@@ -30,13 +35,14 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Image section with adjusted width
               Container(
-                width: MediaQuery.of(context).size.width * 0.1, 
+                width: MediaQuery.of(context).size.width * 0.1, // Adjust width as needed
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: AssetImage('assets/2.jpg'), 
+                    image: AssetImage('assets/2.jpg'), // Replace with your image asset path
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -58,8 +64,10 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // "See All" button
                   TextButton(
                     onPressed: () {
+                      // Add functionality for "See All"
                       print('See All button pressed');
                     },
                     child: Text('See All'),
@@ -71,6 +79,7 @@ class DashboardScreen extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
+                  // Example category chips
                   Chip(label: Text('Development')),
                   Chip(label: Text('IT & Software')),
                   Chip(label: Text('UI/UX')),
@@ -90,7 +99,7 @@ class DashboardScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 0.8,
                 children: List.generate(
-                  6, 
+                  6, // Adjust the number of courses to display
                   (index) => Container(
                     decoration: BoxDecoration(
                       border: Border.all(),
@@ -120,12 +129,18 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
         onTap: (index) {
-          if (index == 1) { 
+          if (index == 1) { // Jika tombol "Pesan" ditekan (index biasanya dimulai dari 0)
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MessageScreen()),
             );
-          }
+          }else if (index == 2) {
+            // Navigasi ke ProfileScreen jika profil ditekan
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+          }  
         } 
       ),
     );
