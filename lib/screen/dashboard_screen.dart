@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'message_screen.dart'; 
 
 class DashboardScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,14 +12,13 @@ class DashboardScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.message),
             onPressed: () {
-              // Navigasi ke halaman pesan
-              print('Message icon pressed');
+                Navigator.pushNamed(context, '/message'
+              );
             },
           ),
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
-              // Navigasi ke halaman profil
               print('Person icon pressed');
             },
           ),
@@ -29,19 +30,17 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image section with adjusted width
               Container(
-                width: MediaQuery.of(context).size.width * 0.1, // Adjust width as needed
+                width: MediaQuery.of(context).size.width * 0.1, 
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: AssetImage('assets/2.jpg'), // Replace with your image asset path
+                    image: AssetImage('assets/2.jpg'), 
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-
               SizedBox(height: 16),
               Text(
                 'Keep Moving Up',
@@ -51,7 +50,6 @@ class DashboardScreen extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
                 style: TextStyle(color: Colors.grey),
               ),
-
               SizedBox(height: 16),
               Text(
                 'Categories',
@@ -60,10 +58,8 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // "See All" button
                   TextButton(
                     onPressed: () {
-                      // Add functionality for "See All"
                       print('See All button pressed');
                     },
                     child: Text('See All'),
@@ -75,7 +71,6 @@ class DashboardScreen extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  // Example category chips
                   Chip(label: Text('Development')),
                   Chip(label: Text('IT & Software')),
                   Chip(label: Text('UI/UX')),
@@ -84,7 +79,6 @@ class DashboardScreen extends StatelessWidget {
                   Chip(label: Text('Personal')),
                 ],
               ),
-
               SizedBox(height: 16),
               Text(
                 'Top Courses',
@@ -96,7 +90,7 @@ class DashboardScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 0.8,
                 children: List.generate(
-                  6, // Adjust the number of courses to display
+                  6, 
                   (index) => Container(
                     decoration: BoxDecoration(
                       border: Border.all(),
@@ -118,13 +112,21 @@ class DashboardScreen extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
-            label: 'Pesan',
+            label: 'Message',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Profil',
           ),
         ],
+        onTap: (index) {
+          if (index == 1) { 
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MessageScreen()),
+            );
+          }
+        } 
       ),
     );
   }
